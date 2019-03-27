@@ -1,6 +1,6 @@
 <?php
 
-namespace app\test\command;
+namespace app\queue\command;
 
 use think\console\Command;
 use think\console\Input;
@@ -8,7 +8,7 @@ use think\console\Output;
 use think\console\input\Option;
 use think\Db;
 
-class Test extends Command
+class Queue extends Command
 {
     protected $server;
 
@@ -16,14 +16,14 @@ class Test extends Command
 
     protected $table = null;
     protected $types = [
-        'test',
+        'queue',
     ];
 
     // 命令行配置函数
     protected function configure()
     {
         // setName 设置命令行名称
-        $this->setName('test');
+        $this->setName('queue');
     }
 
     // 设置命令返回信息
@@ -54,7 +54,7 @@ class Test extends Command
     // 主进程启动时回调函数
     public function onStart(\swoole_server $server)
     {
-        echo "[ " . date('Y-m-d H:i:s') . " ] 启动test" . PHP_EOL;
+        echo "[ " . date('Y-m-d H:i:s') . " ] 启动queue" . PHP_EOL;
     }
 
     public function onWorkerStart(\swoole_server $server, $worker_id)
@@ -108,7 +108,7 @@ class Test extends Command
         foreach ($item['table'] as $k => $v) {
             $new_string .= ucfirst($v);
         }
-        $class_name = "\\app\\test\\asynchronous\\" . $new_string;
+        $class_name = "\\app\\queue\\asynchronous\\" . $new_string;
         if (!class_exists($class_name)) {
             return false;
         }

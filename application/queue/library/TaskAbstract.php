@@ -1,5 +1,5 @@
 <?php
-namespace app\test\library;
+namespace app\queue\library;
 
 abstract class TaskAbstract
 {

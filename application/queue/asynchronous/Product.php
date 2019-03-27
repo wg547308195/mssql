@@ -1,7 +1,7 @@
 <?php
-namespace app\test\asynchronous;
+namespace app\queue\asynchronous;
 
-use app\test\library\TaskAbstract;
+use app\queue\library\TaskAbstract;
 
 class Product extends TaskAbstract
 {
