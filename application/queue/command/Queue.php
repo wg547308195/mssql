@@ -59,7 +59,7 @@ class Queue extends Command
 
     public function onWorkerStart(\swoole_server $server, $worker_id)
     {
-        var_dump(\Db::connect('db2')->name('so_test')->count());die;
+        // var_dump(\Db::connect('db2')->name('so_test')->count());die;
         if (!isset($this->types[$worker_id])) {
             return false;
         }
