@@ -60,4 +60,13 @@ return [
     'break_reconnect' => false,
     // 断线标识字符串
     'break_match_str' => [],
+
+    'db2' => [
+        'type' => 'sqlsrv',
+        'hostname' => '192.168.0.110',
+        'database' => 'cs2',
+        'username' => 'sa',
+        'password' => '325091',
+        'hostport' => '1433'
+    ],
 ];
