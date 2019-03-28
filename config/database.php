@@ -15,7 +15,7 @@ return [
     // 服务器地址
     'hostname'        => \think\facade\Env::get('database.hostname', '127.0.0.1'),
     // 数据库名
-    'database'        => \think\facade\Env::get('database.database', 'com.erp'),
+    'database'        => \think\facade\Env::get('database.database', 'test'),
     // 用户名
     'username'        => \think\facade\Env::get('database.username', 'root'),
     // 密码
@@ -62,11 +62,11 @@ return [
     'break_match_str' => [],
 
     'db2' => [
-        'type' => 'sqlsrv',
-        'hostname' => '192.168.0.110',
-        'database' => 'cs2',
-        'username' => 'sa',
-        'password' => '325091',
-        'hostport' => '1433'
+        'type' => \think\facade\Env::get('database2.type', 'sqlsrv'),
+        'hostname' => \think\facade\Env::get('database2.hostname', '127.0.0.1'),
+        'database' => \think\facade\Env::get('database2.database', 'test'),
+        'username' => \think\facade\Env::get('database2.username', 'sa'),
+        'password' => \think\facade\Env::get('database2.password', 'root'),
+        'hostport' => \think\facade\Env::get('database2.hostport', '1433')
     ],
 ];
