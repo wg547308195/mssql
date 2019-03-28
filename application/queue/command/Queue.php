@@ -97,7 +97,7 @@ class Queue extends Command
     }
 
     // 异步任务处理函数
-    public function onTask(\swoole_server $server, int $task_id, int $worker_id, $item)
+    public function onTask(\swoole_server $server, $fd, $task_id, $item)
     {
         echo "[ " . date('Y-m-d H:i:s') . " ][ 执行任务 ] 任务ID：" . $task_id . "" . PHP_EOL;
 
@@ -131,7 +131,7 @@ class Queue extends Command
     }
 
     // 异步任务完成通知 Worker 进程函数
-    public function onFinish(\swoole_server $server, int $task_id, $data)
+    public function onFinish(\swoole_server $server, $fd, $task_id, $data)
     {
         if ($data == false){
             echo PHP_EOL . "[任务失败] 任务ID：" . $task_id . "；" . PHP_EOL;
