@@ -123,11 +123,12 @@ class Queue extends Command
 
         if ($result == true){
             Db::name('trigger')->where('id','=',$item['id'])->delete();
+            echo PHP_EOL . "[任务成功] 任务ID：" . $task_id . "；" . PHP_EOL;
+
         }else{
             Db::name('trigger')->where('id','=',$item['id'])->update(['status' => -1]);
+            echo PHP_EOL . "[任务失败] 任务ID：" . $task_id . "；" . PHP_EOL;
         }
-
-         $this->server->finish($result);
     }
 
     // 异步任务完成通知 Worker 进程函数
@@ -138,7 +139,6 @@ class Queue extends Command
         }else{
             echo PHP_EOL . "[任务成功] 任务ID：" . $task_id . "；" . PHP_EOL;
         }
-
     }
 
     // 建立连接时回调函数
